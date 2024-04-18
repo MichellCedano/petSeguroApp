@@ -8,6 +8,8 @@
     android:orientation="vertical"
     tools:context=".MisMascotasActivity">
 
+
+
     <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="match_parent"
@@ -23,12 +25,84 @@
         tools:layout_editor_absoluteX="0dp" />
 
 
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="532dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:columnCount="2"
+        android:paddingHorizontal="5dp">
+
+        <TextView
+            android:id="@+id/tvTituloEntrenamiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginBottom="1dp"
+            android:fontFamily="@font/itim"
+            android:text="Sentarse"
+            android:textAlignment="center"
+            android:textColor="@color/naranjaTitulo"
+            android:textSize="35sp"
+            app:layout_constraintBottom_toTopOf="@+id/etUsuario"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="233dp"
+            android:layout_height="285sp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="100dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toTopOf="@+id/btnIniciar"
+            app:layout_constraintStart_toStartOf="@+id/tvTitulo"
+            app:srcCompat="@drawable/entrenamiento_sentado" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_margin="15dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/naranjaDeco"
+            android:columnCount="1"
+            android:paddingHorizontal="5dp">
+
+            <TextView
+                android:id="@+id/tvTituloInstruciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:text="Instrucciones"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvInstrucciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="1. Ten premios a la mano.\n\n2. Usa un comando y gesto.\n\n3. Premia cuando se siente.\n\n4. Repite y sé consistente."
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </GridLayout>
+
+    </GridLayout>
+
     <Button
         android:id="@+id/btnRegresar"
         android:layout_width="150dp"
         android:layout_height="52dp"
         android:layout_marginLeft="135dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@color/naranjaFranja"
         android:fontFamily="@font/itim"
         android:text="@string/regresar"
