@@ -39,9 +39,7 @@
             android:text="1. Pregunta 1"
             android:layout_centerInParent="true"
             android:textSize="20sp"
-            android:textColor="@color/white"
-            android:clickable="true"
-            android:focusable="true" />
+            android:textColor="@color/white" />
 
         <Space
             android:layout_width="match_parent"
@@ -54,9 +52,7 @@
             android:text="Respuesta:"
             android:layout_centerInParent="true"
             android:textSize="18sp"
-            android:textColor="@color/white"
-            android:clickable="true"
-            android:focusable="true" />
+            android:textColor="@color/white" />
 
 
 
