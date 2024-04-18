@@ -10,20 +10,13 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="62dp">
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="0dp"
-        android:layout_marginBottom="78dp"
-        android:background="@color/naranjaFranja"
-        />
 
     <TextView
         android:id="@+id/tvTitulo"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="6dp"
         android:fontFamily="@font/itim"
         android:text="@string/menuAgendarCita"
         android:textAlignment="center"
@@ -32,35 +25,91 @@
         app:layout_constraintBottom_toTopOf="@+id/etRaza"
         tools:layout_editor_absoluteX="0dp" />
 
+    <TextView
+        android:id="@+id/tvMascota"
+        android:textColor="@color/naranjaTexto"
+        android:fontFamily="@font/itim"
+        android:layout_marginLeft="60dp"
+        android:textSize="24sp"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:text="@string/mascota" />
+
+    <Spinner
+        android:id="@+id/mascotas_spinner"
+        android:fontFamily="@font/itim"
+        android:layout_width="200dp"
+        android:textColor="@color/naranjaOscuro"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white"
+        android:contextClickable="true"
+        android:foregroundTint="@color/naranjaOscuro" />
+
+    <TextView
+        android:id="@+id/tvServicios"
+        android:textColor="@color/naranjaTexto"
+        android:fontFamily="@font/itim"
+        android:layout_marginLeft="60dp"
+        android:textSize="24sp"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:text="@string/tipoDeCita" />
+
+    <Spinner
+        android:id="@+id/servicios_spinner"
+        android:fontFamily="@font/itim"
+        android:layout_width="200dp"
+        android:textColor="@color/naranjaOscuro"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white"
+        android:contextClickable="true"
+        android:foregroundTint="@color/naranjaOscuro" />
+
     <CalendarView
         android:id="@+id/calendarView"
+        android:layout_width="314dp"
+        android:layout_height="243dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white"
+        android:selectedWeekBackgroundColor="@color/naranjaOscuro"
+        android:weekNumberColor="@color/naranjaTexto"
+        android:weekSeparatorLineColor="@color/naranjaTexto" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        >
 
-    <Button
-        android:id="@+id/btnListo"
-        android:layout_width="150dp"
-        android:layout_height="52dp"
-        android:layout_marginLeft="130dp"
-        android:backgroundTint="@color/naranjaFranja"
-        android:fontFamily="@font/itim"
-        android:text="@string/listo"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="100dp" />
+        <Button
+            android:id="@+id/btnListo"
+            android:layout_width="158dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="@color/naranjaFranja"
+            android:fontFamily="@font/itim"
+            android:text="@string/listo"
+            android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/btnRegresar"
-        android:layout_width="150dp"
-        android:layout_height="52dp"
-        android:layout_marginLeft="130dp"
-        android:backgroundTint="@color/naranjaDeco"
-        android:fontFamily="@font/itim"
-        android:text="@string/regresar"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="100dp" />
+        <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="158dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="50dp"
+            android:backgroundTint="@color/naranjaDeco"
+            android:fontFamily="@font/itim"
+            android:text="@string/regresar"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="100dp" />
+
+    </LinearLayout>
 
 </LinearLayout>
