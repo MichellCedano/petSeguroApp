@@ -1,10 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/amarilloFondo"
-    tools:context=".AgendarCitaActivity">
+    android:background="#FEDC78"
+    android:orientation="vertical"
+    tools:context=".AgendarCitaActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="62dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginBottom="78dp"
+        android:background="@color/naranjaFranja"
+        />
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:fontFamily="@font/itim"
+        android:text="@string/menuAgendarCita"
+        android:textAlignment="center"
+        android:textColor="@color/naranjaTitulo"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/etRaza"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnListo"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:layout_marginLeft="130dp"
+        android:backgroundTint="@color/naranjaFranja"
+        android:fontFamily="@font/itim"
+        android:text="@string/listo"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <Button
+        android:id="@+id/btnRegresar"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:layout_marginLeft="130dp"
+        android:backgroundTint="@color/naranjaDeco"
+        android:fontFamily="@font/itim"
+        android:text="@string/regresar"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="100dp" />
+
+</LinearLayout>

@@ -1,10 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/amarilloFondo"
+    android:orientation="vertical"
     tools:context=".MisMascotasActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:background="@color/naranjaTitulo"
+        android:fontFamily="@font/itim"
+        android:text="@string/menuMisMascotas"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="48sp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/amarilloFondo"
+        android:backgroundTint="@color/amarilloFondo"
+        android:columnCount="2"
+        android:paddingHorizontal="5dp">
+
+        <ImageButton
+            android:id="@+id/ibMascota1"
+            android:layout_width="200sp"
+            android:layout_height="200sp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginLeft="0dp"
+            android:background="@color/amarilloFondo"
+            app:srcCompat="@drawable/mis_mascotas" />
+
+        <ImageButton
+            android:id="@+id/ibMascota2"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_marginLeft="0dp"
+            android:background="@color/amarilloFondo"
+            app:srcCompat="@drawable/mis_mascotas" />
+
+        <ImageButton
+            android:id="@+id/ibMascota3"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:background="@color/amarilloFondo"
+            app:srcCompat="@drawable/mis_mascotas" />
+
+        <ImageButton
+            android:id="@+id/ibMascota4"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:background="@color/amarilloFondo"
+            app:srcCompat="@drawable/mis_mascotas" />
+    </GridLayout>
+
+    <Button
+        android:id="@+id/btnRegistroMascota"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/naranjaTitulo"
+        android:fontFamily="@font/itim"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="@string/registroMascota"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="537dp" />
+
+    <Button
+        android:id="@+id/btnRegresar"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:layout_marginLeft="130dp"
+        android:backgroundTint="@color/naranjaFranja"
+        android:fontFamily="@font/itim"
+        android:text="@string/regresar"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="100dp" />
+
+
+</LinearLayout>
