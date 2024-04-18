@@ -1,10 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/amarilloFondo"
-    tools:context=".PreguntasFrecActivity">
+    android:orientation="vertical"
+    tools:context=".MisMascotasActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="@font/itim"
+        android:text="@string/menuPreguntasFrec"
+        android:textAlignment="center"
+        android:textColor="@color/naranjaTitulo"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/etUsuario"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="30dp"
+        android:layout_margin="15dp"
+        android:background="@color/naranjaDeco"
+        android:backgroundTint="@color/naranjaDeco"
+        android:columnCount="1"
+        android:paddingHorizontal="5dp">
+
+        <TextView
+            android:id="@+id/question1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. ¿Cómo puedo mantener a mi perro limpio y saludable?"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/question2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. ¿Qué tipo de juguetes y actividades son mejores para mi perro?"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/question3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. ¿Cuáles son los requisitos de vacunación y desparasitación para mi perro?"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:clickable="true"
+            android:focusable="true" />
+
+
+    </GridLayout>
+
+
+    <Button
+        android:id="@+id/btnRegresar"
+        android:layout_width="150dp"
+        android:layout_height="52dp"
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="150dp"
+        android:backgroundTint="@color/naranjaFranja"
+        android:fontFamily="@font/itim"
+        android:text="@string/regresar"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="100dp" />
+
+
+</LinearLayout>

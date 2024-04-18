@@ -41,7 +41,7 @@ class MenuActivity : AppCompatActivity() {
         }
 
         buttonEntrenamiento.setOnClickListener {
-            var intent: Intent = Intent( this, EntrenamientoActivity::class.java)
+            var intent: Intent = Intent( this, MenuEntrenamientoActivity::class.java)
             startActivity(intent)
         }
 

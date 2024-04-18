@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class EntrenamientoActivity : AppCompatActivity() {
+class RespuestasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_entrenamiento)
+        setContentView(R.layout.activity_respuestas)
 
         val buttonRegresar : Button = findViewById(R.id.btnRegresar)
 
