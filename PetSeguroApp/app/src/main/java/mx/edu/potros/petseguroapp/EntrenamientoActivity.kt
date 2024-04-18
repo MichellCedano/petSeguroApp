@@ -14,7 +14,7 @@ class EntrenamientoActivity : AppCompatActivity() {
 
 
         buttonRegresar.setOnClickListener {
-            var intent: Intent = Intent( this, PreguntasFrecActivity::class.java)
+            var intent: Intent = Intent( this, MenuActivity::class.java)
             startActivity(intent)
         }
     }

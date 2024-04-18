@@ -16,16 +16,10 @@
             android:name=".EntrenamientoActivity"
             android:exported="false" />
         <activity
+            android:name=".MenuEntrenamientoActivity"
+            android:exported="false" />
+        <activity
             android:name=".RespuestasActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RespuestaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PreguntaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AgendarCita"
             android:exported="false" />
         <activity
             android:name=".Mascota"
