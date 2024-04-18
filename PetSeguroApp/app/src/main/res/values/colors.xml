@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="amarilloFondo">#FEDC78</color>
+    <color name="naranjaTitulo">#DF7149</color>
+    <color name="naranjaFranja">#F38860</color>
+    <color name="naranjaDeco">#F2A072</color>
+    <color name="naranjaHint">#D39177</color>
+    <color name="naranjaTexto">#DF7149</color>
+    <color name="naranjaOscuro">#A32509</color>
+</resources>

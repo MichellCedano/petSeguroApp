@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEDC78"
+    tools:context=".SignInActivity"
+    android:orientation="vertical">
+
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginBottom="88dp"
+        android:background="@color/naranjaFranja"
+        app:layout_constraintBottom_toTopOf="@+id/tvTitulo"
+        app:layout_constraintEnd_toStartOf="@+id/tvTitulo" />
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="62dp"
+        android:fontFamily="@font/itim"
+        android:text="@string/titulo"
+        android:textAlignment="center"
+        android:textColor="@color/naranjaTitulo"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/etUsuario"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <EditText
+        android:id="@+id/etUsuario"
+        android:layout_width="233dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:fontFamily="@font/itim"
+        android:hint="@string/usuarioText"
+        android:inputType="text"
+        android:textColorHint="@color/naranjaHint"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="214dp" />
+
+    <EditText
+        android:id="@+id/etcontraseña"
+        android:layout_width="233dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="150dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:fontFamily="@font/itim"
+        android:hint="@string/contraseñaText"
+        android:layout_marginLeft="80dp"
+        android:inputType="textPassword"
+        android:textColorHint="@color/naranjaHint"
+        android:textSize="24sp"
+        />
+
+    <Button
+        android:id="@+id/btnIniciarSesion"
+        android:layout_width="229dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="14dp"
+        android:backgroundTint="@color/naranjaTitulo"
+        android:fontFamily="@font/itim"
+        android:text="@string/inciarSesionText"
+        android:textSize="28sp"
+        android:layout_marginLeft="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrarme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnRegistrarme"
+        android:layout_width="175dp"
+        android:layout_height="52dp"
+        android:backgroundTint="@color/naranjaDeco"
+        android:fontFamily="@font/itim"
+        android:text="@string/registroText"
+        android:textSize="24sp"
+        android:layout_marginLeft="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="600dp" />
+
+
+</LinearLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEDC78"
+    android:orientation="vertical"
+
+    tools:context=".MainActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginBottom="74dp"
+        android:background="@color/naranjaFranja"
+        app:layout_constraintBottom_toTopOf="@+id/tvTitulo"
+        tools:layout_editor_absoluteX="-16dp" />
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/itim"
+        android:text="@string/titulo"
+        android:textColor="@color/naranjaTitulo"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        tools:layout_editor_absoluteX="86dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="233dp"
+        android:layout_height="285sp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="0dp"
+        android:layout_weight="1"
+
+
+        app:layout_constraintBottom_toTopOf="@+id/btnIniciar"
+        app:layout_constraintStart_toStartOf="@+id/tvTitulo"
+        app:srcCompat="@drawable/logo2petseguro" />
+
+    <Button
+        android:id="@+id/btnIniciar"
+        android:layout_width="wrap_content"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="200dp"
+        android:layout_height="75dp"
+        android:backgroundTint="@color/naranjaTitulo"
+        android:fontFamily="@font/itim"
+        android:text="@string/inciarText"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="537dp" />
+
+</LinearLayout>
