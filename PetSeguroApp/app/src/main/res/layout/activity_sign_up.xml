@@ -66,7 +66,7 @@
         tools:layout_editor_absoluteY="288dp" />
 
     <EditText
-        android:id="@+id/etcontraseña"
+        android:id="@+id/etcontrasenia"
         android:layout_width="233dp"
         android:layout_height="50dp"
         android:layout_marginBottom="30dp"

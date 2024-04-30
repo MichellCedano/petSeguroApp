@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "693167926822",
+    "project_id": "loginpetseguro",
+    "storage_bucket": "loginpetseguro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693167926822:android:4b233de084b8244c2800e7",
+        "android_client_info": {
+          "package_name": "mx.edu.potros.petseguroapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaaULalCdKdbH5u0jGMzhPvlo0w3RJpjQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

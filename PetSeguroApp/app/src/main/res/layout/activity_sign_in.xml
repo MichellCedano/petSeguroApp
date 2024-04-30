@@ -34,7 +34,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <EditText
-        android:id="@+id/etUsuario"
+        android:id="@+id/etEmail"
         android:layout_width="233dp"
         android:layout_height="50dp"
         android:layout_marginLeft="80dp"
@@ -42,7 +42,7 @@
         android:background="@color/white"
         android:ems="10"
         android:fontFamily="@font/itim"
-        android:hint="@string/usuarioText"
+        android:hint="@string/correoText"
         android:inputType="text"
         android:textColorHint="@color/naranjaHint"
         android:textSize="24sp"
@@ -50,7 +50,7 @@
         tools:layout_editor_absoluteY="214dp" />
 
     <EditText
-        android:id="@+id/etcontraseña"
+        android:id="@+id/etcontrasenia"
         android:layout_width="233dp"
         android:layout_height="50dp"
         android:layout_marginBottom="150dp"
