@@ -61,13 +61,13 @@ class MisMascotasActivity : AppCompatActivity() {
                             val mascotaRef = database.getReference("Mascotas").orderByChild("idDuenio").equalTo(uid)
                             mascotaRef.addListenerForSingleValueEvent(object : ValueEventListener {
                                 override fun onDataChange(mascotaSnapshot: DataSnapshot) {
-                                    val mascotas = mutableListOf<Mascot?>()
+                                    val mascotas = mutableListOf<Pair<String, Mascot?>>()
                                     mascotaSnapshot.children.forEach { mascotaSnapshot ->
-                                        mascotas.add(mascotaSnapshot.getValue(Mascot::class.java))
+                                        mascotas.add((mascotaSnapshot.key ?: "") to mascotaSnapshot.getValue(Mascot::class.java))
                                     }
                                     // Verificar si hay una mascota asociada al número del botón
                                     if (numMascota <= mascotas.size) {
-                                        val mascota = mascotas[numMascota - 1] // El índice comienza en 0
+                                        val (mascotaId, mascota) = mascotas[numMascota - 1] // El índice comienza en 0
                                         mascota?.let {
                                             // Abrir la actividad de detalle con los datos de la mascota
                                             val intent = Intent(this@MisMascotasActivity, Mascota::class.java)
@@ -75,8 +75,9 @@ class MisMascotasActivity : AppCompatActivity() {
                                             intent.putExtra("nombre", mascota.nombre)
                                             intent.putExtra("edad", mascota.edad)
                                             intent.putExtra("cuidadoEspecial", mascota.cuidadoEspecial)
-                                            intent.putExtra("idDuenio", mascota.idDuenio)
+                                            intent.putExtra("idMascota", mascotaId) // Agregar la ID de la mascota como extra
                                             intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
+                                            intent.putExtra("idMascota", mascotaId) // Agregar la ID de la mascota como extra
                                             startActivity(intent)
                                         }
                                     } else {
@@ -100,4 +101,5 @@ class MisMascotasActivity : AppCompatActivity() {
             })
         }
     }
+
 }

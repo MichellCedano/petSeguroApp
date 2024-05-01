@@ -3,9 +3,12 @@ package mx.edu.potros.petseguroapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.database.FirebaseDatabase
 
 class Mascota : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,27 +18,31 @@ class Mascota : AppCompatActivity() {
         // Obtener los datos de la mascota del Intent
         val intent = intent
         val nombre = intent.getStringExtra("nombre")
-        val edad = intent.getIntExtra("edad",0).toString()
+        val edad = intent.getIntExtra("edad", 0).toString()
         val raza = intent.getStringExtra("raza")
         val cuidadoEsp = intent.getStringExtra("cuidadoEspecial")
         val idDuenio = intent.getStringExtra("idDuenio")
         val correo = intent.getStringExtra("correo")
+        val idMascota = intent.getStringExtra("idMascota")
 
-        // Obtener referencias a los TextView
-        val razaText: TextView = findViewById(R.id.etRaza)
-        val nombreText: TextView = findViewById(R.id.etNombre)
-        val edadText: TextView = findViewById(R.id.etEdad)
-        val cuidadoEspecialText: TextView = findViewById(R.id.etCuidado)
 
-        // Establecer los datos de la mascota en los TextView
-        nombreText.text = nombre
-        edadText.text = edad
-        razaText.text = raza
-        cuidadoEspecialText.text = cuidadoEsp
+        // Obtener referencias a los EditText
+        val razaText: EditText = findViewById(R.id.etRaza)
+        val nombreText: EditText = findViewById(R.id.etNombre)
+        val edadText: EditText = findViewById(R.id.etEdad)
+        val cuidadoEspecialText: EditText = findViewById(R.id.etCuidado)
+
+        // Establecer los datos de la mascota en los EditText
+        nombreText.setText(nombre)
+        edadText.setText(edad)
+        razaText.setText(raza)
+        cuidadoEspecialText.setText(cuidadoEsp)
 
         // Obtener referencias a los botones
         val buttonAgendar : Button = findViewById(R.id.btnAgendar)
         val buttonRegresar : Button = findViewById(R.id.btnRegresar)
+        val buttonEditar : Button = findViewById(R.id.btnEditar)
+        val buttonEliminar : Button = findViewById(R.id.btnEliminar)
 
         // Configurar el botón Regresar para volver a la actividad MisMascotasActivity
         buttonRegresar.setOnClickListener {
@@ -50,5 +57,50 @@ class Mascota : AppCompatActivity() {
             intent.putExtra("idDuenio", idDuenio) // Adjunta el id del dueño como extra al Intent
             startActivity(intent)
         }
+
+        buttonEditar.setOnClickListener {
+            val idMascota = intent.getStringExtra("idMascota") ?: return@setOnClickListener
+
+            // Obtener una referencia a la ubicación de la mascota en la base de datos
+            val mascotaRef = FirebaseDatabase.getInstance().getReference("Mascotas").child(idMascota)
+
+            // Actualizar los datos de la mascota
+            val nuevaMascota = Mascot(
+                razaText.text.toString(),
+                nombreText.text.toString(),
+                edadText.text.toString().toInt(),
+                cuidadoEspecialText.text.toString(),
+                idDuenio
+            )
+            mascotaRef.updateChildren(nuevaMascota.toMap())
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Mascota actualizada correctamente", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener { e ->
+                    Log.e("Mascota", "Error al actualizar la mascota: ${e.message}")
+                    Toast.makeText(this, "Error al actualizar la mascota", Toast.LENGTH_SHORT).show()
+                }
+        }
+
+
+
+        buttonEliminar.setOnClickListener {
+            val idMascota = intent.getStringExtra("idMascota") ?: return@setOnClickListener
+
+            // Obtener una referencia a la ubicación de la mascota en la base de datos
+            val mascotaRef = FirebaseDatabase.getInstance().getReference("Mascotas").child(idMascota)
+
+            // Eliminar la mascota de la base de datos
+            mascotaRef.removeValue()
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Mascota eliminada correctamente", Toast.LENGTH_SHORT).show()
+                    // Aquí puedes redirigir a la actividad MisMascotasActivity o realizar otra acción necesaria
+                }
+                .addOnFailureListener { e ->
+                    Log.e("Mascota", "Error al eliminar la mascota: ${e.message}")
+                    Toast.makeText(this, "Error al eliminar la mascota", Toast.LENGTH_SHORT).show()
+                }
+        }
+
     }
 }

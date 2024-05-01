@@ -31,4 +31,6 @@
     <string name="notasCitaVeterinario">Citas veterinario del mes</string>
     <string name="notasRutina">Notas rutina</string>
     <string name="notasEventos">Notas eventos</string>
+    <string name="editar">Editar mascota</string>
+    <string name="eliminar">Eliminar</string>
 </resources>

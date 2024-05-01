@@ -99,8 +99,8 @@
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="229dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="80dp"
+        android:layout_height="78dp"
+        android:layout_marginLeft="90dp"
         android:backgroundTint="@color/naranjaTitulo"
         android:fontFamily="@font/itim"
         android:text="@string/registrar"

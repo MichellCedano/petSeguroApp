@@ -1,11 +1,20 @@
 package mx.edu.potros.petseguroapp
 
 data class Mascot(
-                var raza:String?=null,
-                var nombre:String?=null,
-                var edad:Int?=null,
-                var cuidadoEspecial:String?=null,
-                var idDuenio:String?=null
-){
-    override fun toString()=raza+"\t"+nombre+"\t"+edad+"\t"+cuidadoEspecial+"\t"+idDuenio
+    val raza: String = "",
+    val nombre: String = "",
+    val edad: Int = 0,
+    val cuidadoEspecial: String = "",
+    val idDuenio: String? = ""
+) {
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "raza" to raza,
+            "nombre" to nombre,
+            "edad" to edad,
+            "cuidadoEspecial" to cuidadoEspecial
+            // No incluir idDuenio aquí para evitar actualizarlo
+        )
+    }
 }
+
