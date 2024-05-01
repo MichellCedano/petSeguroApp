@@ -55,21 +55,20 @@ class SignInActivity : AppCompatActivity() {
                 if(task.isSuccessful) {
                     Log.d("TAG", "Inicio de sesión exitoso!")
                     Toast.makeText(baseContext,"Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show()
-                    inicio()
+
+                    // Crear un Intent para iniciar la actividad MenuActivity
+                    val intent = Intent(this, MenuActivity::class.java)
+
+                    // Agregar el correo electrónico como extra al Intent
+                    intent.putExtra("correo", email)
+
+                    // Iniciar la actividad MenuActivity
+                    startActivity(intent)
                 } else {
                     Log.w("TAG", "Inicio de sesión fallido", task.exception)
                     Toast.makeText(baseContext,"ERROR: Autenticación fallida!", Toast.LENGTH_SHORT).show()
                 }
             }
-    }
-
-    private fun inicio(){
-        val buttonIniciarSesion : Button = findViewById(R.id.btnIniciarSesion)
-
-        buttonIniciarSesion.setOnClickListener {
-            var intent: Intent = Intent( this, MenuActivity::class.java)
-            startActivity(intent)
-        }
     }
 
 }

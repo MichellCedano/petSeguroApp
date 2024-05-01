@@ -3,48 +3,101 @@ package mx.edu.potros.petseguroapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MisMascotasActivity : AppCompatActivity() {
+    private lateinit var database: FirebaseDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_mascotas)
 
-        val buttonRegistrar : Button = findViewById(R.id.btnRegistroMascota)
+        val intent = intent
+        val correo = intent.getStringExtra("correo")
 
-        val buttonRegresar : Button = findViewById(R.id.btnRegresar)
+        database = FirebaseDatabase.getInstance()
 
-        val butttonMascota1 : ImageButton = findViewById(R.id.ibMascota1)
-        val butttonMascota2 : ImageButton = findViewById(R.id.ibMascota2)
-        val butttonMascota3 : ImageButton = findViewById(R.id.ibMascota3)
-        val butttonMascota4 : ImageButton = findViewById(R.id.ibMascota4)
+        val buttonRegistrar: Button = findViewById(R.id.btnRegistroMascota)
+        val buttonRegresar: Button = findViewById(R.id.btnRegresar)
 
         buttonRegistrar.setOnClickListener {
-            var intent: Intent = Intent( this, RegistroMascota::class.java)
+            val intent = Intent(this, RegistroMascota::class.java)
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)
         }
 
         buttonRegresar.setOnClickListener {
-            var intent: Intent = Intent( this, MenuActivity::class.java)
+            val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)
         }
 
-        butttonMascota1.setOnClickListener {
-            var intent: Intent = Intent( this, Mascota::class.java)
-            startActivity(intent)
+        // Asociar los botones directamente a los datos de las mascotas en la base de datos
+        val buttonIds = listOf(R.id.ibMascota1, R.id.ibMascota2, R.id.ibMascota3, R.id.ibMascota4)
+        for (i in 0 until buttonIds.size) {
+            val button = findViewById<ImageButton>(buttonIds[i])
+            button.setOnClickListener {
+                loadMascota(correo, i + 1) // El índice comienza en 1
+            }
         }
-        butttonMascota2.setOnClickListener {
-            var intent: Intent = Intent( this, Mascota::class.java)
-            startActivity(intent)
-        }
-        butttonMascota3.setOnClickListener {
-            var intent: Intent = Intent( this, Mascota::class.java)
-            startActivity(intent)
-        }
-        butttonMascota4.setOnClickListener {
-            var intent: Intent = Intent( this, Mascota::class.java)
-            startActivity(intent)
+    }
+
+    private fun loadMascota(correo: String?, numMascota: Int) {
+        correo?.let { userEmail ->
+            val userRef = database.getReference("Users").orderByChild("correo").equalTo(userEmail)
+            userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        val userId = dataSnapshot.children.firstOrNull()?.key
+                        userId?.let { uid ->
+                            val mascotaRef = database.getReference("Mascotas").orderByChild("idDuenio").equalTo(uid)
+                            mascotaRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(mascotaSnapshot: DataSnapshot) {
+                                    val mascotas = mutableListOf<Mascot?>()
+                                    mascotaSnapshot.children.forEach { mascotaSnapshot ->
+                                        mascotas.add(mascotaSnapshot.getValue(Mascot::class.java))
+                                    }
+                                    // Verificar si hay una mascota asociada al número del botón
+                                    if (numMascota <= mascotas.size) {
+                                        val mascota = mascotas[numMascota - 1] // El índice comienza en 0
+                                        mascota?.let {
+                                            // Abrir la actividad de detalle con los datos de la mascota
+                                            val intent = Intent(this@MisMascotasActivity, Mascota::class.java)
+                                            intent.putExtra("raza", mascota.raza)
+                                            intent.putExtra("nombre", mascota.nombre)
+                                            intent.putExtra("edad", mascota.edad)
+                                            intent.putExtra("cuidadoEspecial", mascota.cuidadoEspecial)
+                                            intent.putExtra("idDuenio", mascota.idDuenio)
+                                            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
+                                            startActivity(intent)
+                                        }
+                                    } else {
+                                        Toast.makeText(this@MisMascotasActivity, "No hay mascota asociada a este botón", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+                                    Log.e("MisMascotasActivity", "Error de base de datos: ${error.message}")
+                                }
+                            })
+                        }
+                    } else {
+                        Toast.makeText(this@MisMascotasActivity, "No se encontró ningún usuario con el correo proporcionado", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("MisMascotasActivity", "Error de base de datos: ${error.message}")
+                }
+            })
         }
     }
 }
