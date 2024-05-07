@@ -33,4 +33,7 @@
     <string name="notasEventos">Notas eventos</string>
     <string name="editar">Editar mascota</string>
     <string name="eliminar">Eliminar</string>
+    <string name="respuesta_1">Baño regular: Usa champú suave, no bañes demasiado.\nCepillado frecuente: Elimina el pelo suelto y previene enredos.\nHigiene dental: Cepilla sus dientes para evitar problemas dentales.\nCorte de uñas: Manténlas recortadas para prevenir roturas.\nControl de parásitos: Usa tratamientos regulares contra pulgas y garrapatas.\nAlimentación saludable: Dieta equilibrada para un pelaje sano.\nEjercicio regular: Mantén a tu perro activo.\nVisitas al veterinario: Al menos una vez al año para chequeos y vacunas.</string>
+    <string name="respuesta_2">Respuesta 3.</string>
+    <string name="respuesta_3">Respuesta 4:.</string>
 </resources>

@@ -18,42 +18,32 @@
         android:text="Pregunta 1"
         android:textAlignment="center"
         android:textColor="@color/naranjaTitulo"
-        android:textSize="48sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/etUsuario"
         tools:layout_editor_absoluteX="0dp" />
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="362dp"
         android:layout_margin="15dp"
+        android:layout_marginTop="30dp"
         android:background="@color/naranjaDeco"
         android:backgroundTint="@color/naranjaDeco"
         android:columnCount="1"
         android:paddingHorizontal="5dp">
-
-        <TextView
-            android:id="@+id/question1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1. Pregunta 1"
-            android:layout_centerInParent="true"
-            android:textSize="20sp"
-            android:textColor="@color/white" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="15dp" />
 
         <TextView
-            android:id="@+id/question2"
+            android:id="@+id/answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Respuesta:"
             android:layout_centerInParent="true"
-            android:textSize="18sp"
-            android:textColor="@color/white" />
-
+            android:text="Respuesta:"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
 
     </GridLayout>
@@ -64,7 +54,7 @@
         android:layout_width="150dp"
         android:layout_height="52dp"
         android:layout_marginLeft="135dp"
-        android:layout_marginTop="250dp"
+
         android:backgroundTint="@color/naranjaFranja"
         android:fontFamily="@font/itim"
         android:text="@string/regresar"

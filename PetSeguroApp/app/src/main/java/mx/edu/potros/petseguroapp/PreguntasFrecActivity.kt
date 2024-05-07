@@ -16,29 +16,30 @@ class PreguntasFrecActivity : AppCompatActivity() {
         val question3 = findViewById<TextView>(R.id.question3)
         val buttonRegresar : Button = findViewById(R.id.btnRegresar)
 
-
         buttonRegresar.setOnClickListener {
-            var intent: Intent = Intent( this, MenuActivity::class.java)
+            val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
         }
 
         question1.setOnClickListener {
-            var intent: Intent = Intent( this, RespuestasActivity::class.java)
-            startActivity(intent)
-
+            val preguntaSeleccionada = question1.text.toString()
+            abrirRespuestasActivity(preguntaSeleccionada)
         }
 
         question2.setOnClickListener {
-            var intent: Intent = Intent( this, RespuestasActivity::class.java)
-            startActivity(intent)
-
+            val preguntaSeleccionada = question2.text.toString()
+            abrirRespuestasActivity(preguntaSeleccionada)
         }
 
         question3.setOnClickListener {
-            var intent: Intent = Intent( this, RespuestasActivity::class.java)
-            startActivity(intent)
-
+            val preguntaSeleccionada = question3.text.toString()
+            abrirRespuestasActivity(preguntaSeleccionada)
         }
     }
 
+    private fun abrirRespuestasActivity(preguntaSeleccionada: String) {
+        val intent = Intent(this, RespuestasActivity::class.java)
+        intent.putExtra("pregunta", preguntaSeleccionada)
+        startActivity(intent)
+    }
 }
