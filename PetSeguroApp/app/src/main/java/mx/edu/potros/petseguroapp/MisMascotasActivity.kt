@@ -34,6 +34,8 @@ class MisMascotasActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
         buttonRegresar.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
             intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
@@ -82,6 +84,17 @@ class MisMascotasActivity : AppCompatActivity() {
                                         }
                                     } else {
                                         Toast.makeText(this@MisMascotasActivity, "No hay mascota asociada a este botón", Toast.LENGTH_SHORT).show()
+                                    }
+                                    if (numMascota <= mascotas.size) {
+                                        val (mascotaId, mascota) = mascotas[numMascota - 1]
+                                        mascota?.let {
+                                            val intent = Intent(this@MisMascotasActivity, AgendarCitaActivity::class.java)
+                                            intent.putExtra("idMascota", mascotaId)  // ID de la mascota
+                                            intent.putExtra("nombreMascota", mascota.nombre)  // Nombre de la mascota
+                                            startActivity(intent)  // Inicia AgendarCitaActivity
+                                        }
+                                    } else {
+                                        Toast.makeText(this@MisMascotasActivity, "No hay mascota asociada", Toast.LENGTH_SHORT).show()
                                     }
                                 }
 
