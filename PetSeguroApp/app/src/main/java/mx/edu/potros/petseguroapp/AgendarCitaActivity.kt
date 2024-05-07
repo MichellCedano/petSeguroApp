@@ -24,6 +24,7 @@ var selectedDate: String? = null
 var selectedService: String? = null
 var idMascota: String? = null
 
+    private lateinit var correoUsuario: String
     override fun onCreate(savedBundle: Bundle?) {
         super.onCreate(savedBundle)
         setContentView(R.layout.activity_agendar_cita)
@@ -119,6 +120,7 @@ var idMascota: String? = null
 
         btnRegresar.setOnClickListener {
             val intent = Intent(this, Mascota::class.java)
+            intent.putExtra("correo", correoUsuario) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)
         }
     }}
