@@ -34,8 +34,6 @@ class MisMascotasActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
         buttonRegresar.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
             intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
@@ -65,37 +63,60 @@ class MisMascotasActivity : AppCompatActivity() {
                                 override fun onDataChange(mascotaSnapshot: DataSnapshot) {
                                     val mascotas = mutableListOf<Pair<String, Mascot?>>()
                                     mascotaSnapshot.children.forEach { mascotaSnapshot ->
-                                        mascotas.add((mascotaSnapshot.key ?: "") to mascotaSnapshot.getValue(Mascot::class.java))
+                                        mascotas.add(
+                                            (mascotaSnapshot.key ?: "") to mascotaSnapshot.getValue(
+                                                Mascot::class.java
+                                            )
+                                        )
                                     }
                                     // Verificar si hay una mascota asociada al número del botón
+                                    // Dentro de MisMascotasActivity
                                     if (numMascota <= mascotas.size) {
-                                        val (mascotaId, mascota) = mascotas[numMascota - 1] // El índice comienza en 0
+                                        val (mascotaId, mascota) = mascotas[numMascota - 1]  // El índice comienza en 0
                                         mascota?.let {
-                                            // Abrir la actividad de detalle con los datos de la mascota
-                                            val intent = Intent(this@MisMascotasActivity, Mascota::class.java)
+                                            // Abre MascotaActivity con los datos de la mascota
+                                            val intent = Intent(
+                                                this@MisMascotasActivity,
+                                                Mascota::class.java
+                                            )
                                             intent.putExtra("raza", mascota.raza)
                                             intent.putExtra("nombre", mascota.nombre)
                                             intent.putExtra("edad", mascota.edad)
-                                            intent.putExtra("cuidadoEspecial", mascota.cuidadoEspecial)
-                                            intent.putExtra("idMascota", mascotaId) // Agregar la ID de la mascota como extra
-                                            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
-                                            intent.putExtra("idMascota", mascotaId) // Agregar la ID de la mascota como extra
+                                            intent.putExtra(
+                                                "cuidadoEspecial",
+                                                mascota.cuidadoEspecial
+                                            )
+                                            intent.putExtra(
+                                                "idMascota",
+                                                mascotaId
+                                            )  // ID de la mascota
+                                            intent.putExtra(
+                                                "correo",
+                                                correo
+                                            )  // Adjunta el correo electrónico como extra al Intent
                                             startActivity(intent)
                                         }
                                     } else {
-                                        Toast.makeText(this@MisMascotasActivity, "No hay mascota asociada a este botón", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(
+                                            this@MisMascotasActivity,
+                                            "No hay mascota asociada a este botón",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
+                                    /**
                                     if (numMascota <= mascotas.size) {
-                                        val (mascotaId, mascota) = mascotas[numMascota - 1]
-                                        mascota?.let {
-                                            val intent = Intent(this@MisMascotasActivity, AgendarCitaActivity::class.java)
-                                            intent.putExtra("idMascota", mascotaId)  // ID de la mascota
-                                            intent.putExtra("nombreMascota", mascota.nombre)  // Nombre de la mascota
-                                            startActivity(intent)  // Inicia AgendarCitaActivity
-                                        }
-                                    } else {
-                                        Toast.makeText(this@MisMascotasActivity, "No hay mascota asociada", Toast.LENGTH_SHORT).show()
+                                    val (mascotaId, mascota) = mascotas[numMascota - 1]
+                                    mascota?.let {
+                                    val intent = Intent(this@MisMascotasActivity, AgendarCitaActivity::class.java)
+                                    intent.putExtra("idMascota", mascotaId)  // ID de la mascota
+                                    intent.putExtra("nombreMascota", mascota.nombre)  // Nombre de la mascota
+                                    startActivity(intent)  // Inicia AgendarCitaActivity
                                     }
+                                    } else {
+                                    Toast.makeText(this@MisMascotasActivity, "No hay mascota asociada", Toast.LENGTH_SHORT).show()
+                                    }
+
+                                     */
                                 }
 
                                 override fun onCancelled(error: DatabaseError) {

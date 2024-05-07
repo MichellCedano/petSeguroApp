@@ -14,6 +14,7 @@ class AgendarCitaActivity : AppCompatActivity() {
 lateinit var calendarView: CalendarView
 lateinit var serviciosSpinner: Spinner
 lateinit var btnListo: Button
+    lateinit var btnRegresar: Button
     lateinit var tvNombreMascota: TextView
 
 lateinit var database: FirebaseDatabase
@@ -112,5 +113,12 @@ var idMascota: String? = null
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+
+        btnRegresar = findViewById(R.id.btnRegresar)
+
+        btnRegresar.setOnClickListener {
+            val intent = Intent(this, Mascota::class.java)
+            startActivity(intent)
         }
     }}

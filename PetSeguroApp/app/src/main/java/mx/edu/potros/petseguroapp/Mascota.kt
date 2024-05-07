@@ -52,10 +52,13 @@ class Mascota : AppCompatActivity() {
         }
 
         // Configurar el botón Agendar para ir a la actividad AgendarCitaActivity
-        buttonAgendar.setOnClickListener {
+        // Configura el botón para agendar cita
+        val buttonAgendarCita: Button = findViewById(R.id.btnAgendar)  // Asegúrate de tener el ID correcto
+        buttonAgendarCita.setOnClickListener {
             val intent = Intent(this, AgendarCitaActivity::class.java)
-            intent.putExtra("idDuenio", idDuenio) // Adjunta el id del dueño como extra al Intent
-            startActivity(intent)
+            intent.putExtra("idMascota", idMascota)  // ID de la mascota
+            intent.putExtra("nombreMascota", nombre)  // Nombre de la mascota
+            startActivity(intent)  // Inicia AgendarCitaActivity
         }
 
         buttonEditar.setOnClickListener {
