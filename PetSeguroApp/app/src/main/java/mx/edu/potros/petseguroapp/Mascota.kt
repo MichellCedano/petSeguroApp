@@ -57,7 +57,12 @@ class Mascota : AppCompatActivity() {
         buttonAgendarCita.setOnClickListener {
             val intent = Intent(this, AgendarCitaActivity::class.java)
             intent.putExtra("idMascota", idMascota)  // ID de la mascota
-            intent.putExtra("nombreMascota", nombre)  // Nombre de la mascota
+            intent.putExtra("nombre", nombre)  // Nombre de la mascota
+            intent.putExtra("edad", edad)  // Nombre de la mascota
+            intent.putExtra("raza", raza)  // Nombre de la mascota
+            intent.putExtra("idDuenio", idDuenio)  // Nombre de la mascota
+            intent.putExtra("cuidadoEspecial", cuidadoEsp)  // Nombre de la mascota
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)  // Inicia AgendarCitaActivity
         }
 

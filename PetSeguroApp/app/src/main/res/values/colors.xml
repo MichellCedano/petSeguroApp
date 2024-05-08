@@ -9,4 +9,5 @@
     <color name="naranjaHint">#D39177</color>
     <color name="naranjaTexto">#DF7149</color>
     <color name="naranjaOscuro">#A32509</color>
+    <color name="calendar_date_text_colors">#FF0000</color>
 </resources>

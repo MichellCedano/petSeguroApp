@@ -41,23 +41,33 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/itim"
-            android:text="Citas medicas del mes:"
+            android:text="@string/notasdelMes"
             android:textColor="@color/naranjaFranja"
             android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etNota"
+            android:layout_width="372dp"
+            android:layout_height="215dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="text" />
 
     </GridLayout>
 
 
     <Button
         android:id="@+id/btnAceptar"
-        android:layout_width="150dp"
-        android:layout_height="52dp"
-        android:layout_marginLeft="135dp"
+        android:layout_width="206dp"
+        android:layout_height="86dp"
+        android:layout_marginLeft="105dp"
         android:layout_marginTop="190dp"
         android:backgroundTint="@color/naranjaFranja"
         android:fontFamily="@font/itim"
         android:text="Aceptar"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="100dp" />

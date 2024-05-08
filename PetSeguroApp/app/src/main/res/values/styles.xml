@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Otros estilos de la aplicación aquí -->
+
+        <!-- Estilo para el color de las fechas en el CalendarView -->
+        <item name="android:calendarViewStyle">@style/CalendarViewStyle</item>
+    </style>
+
+    <style name="CalendarViewStyle">
+        <item name="android:dateTextAppearance">@style/CalendarDateTextAppearance</item>
+    </style>
+
+    <style name="CalendarDateTextAppearance">
+        <item name="android:textColor">@color/calendar_date_text_colors</item>
+    </style>
+</resources>

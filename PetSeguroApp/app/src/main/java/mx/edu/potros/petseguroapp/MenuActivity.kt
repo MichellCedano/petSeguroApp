@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
+import com.google.firebase.auth.FirebaseAuth
 
 class MenuActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -31,12 +32,11 @@ class MenuActivity : AppCompatActivity() {
 
         val buttonEntrenamiento : ImageButton = findViewById(R.id.ibEntrenamiento)
 
-        val buttonAgendarCita : ImageButton = findViewById(R.id.ibAgendarCita)
-
         val buttonCerrarSesion : ImageButton = findViewById(R.id.ibCerrarSesion)
 
         buttonCalendario.setOnClickListener {
             var intent: Intent = Intent( this, CalendarioActivity::class.java)
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)
         }
 
@@ -56,13 +56,16 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        buttonAgendarCita.setOnClickListener {
-            var intent: Intent = Intent( this, AgendarCitaActivity::class.java)
-            startActivity(intent)
-        }
         buttonCerrarSesion.setOnClickListener {
-            var intent: Intent = Intent( this, MainActivity::class.java)
+            // Cerrar sesión del usuario
+            FirebaseAuth.getInstance().signOut()
+
+            // Redirigir a la pantalla de inicio (MainActivity)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+
+            // Finalizar esta actividad para evitar que el usuario pueda volver atrás con el botón de atrás
+            finish()
         }
 
     }

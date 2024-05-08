@@ -24,7 +24,6 @@ var selectedDate: String? = null
 var selectedService: String? = null
 var idMascota: String? = null
 
-    private lateinit var correoUsuario: String
     override fun onCreate(savedBundle: Bundle?) {
         super.onCreate(savedBundle)
         setContentView(R.layout.activity_agendar_cita)
@@ -33,8 +32,27 @@ var idMascota: String? = null
         tvNombreMascota = findViewById(R.id.tvNombreMascota)
 
         // Obtener el nombre de la mascota desde el Intent
-        val nombreMascota = intent.getStringExtra("nombreMascota")
+        val nombreMascota = intent.getStringExtra("nombre")
         val idMascota = intent.getStringExtra("idMascota")  // Obtener el ID de la mascota
+        val edad = intent.getIntExtra("edad", 0).toString()
+        val raza = intent.getStringExtra("raza")
+        val cuidadoEsp = intent.getStringExtra("cuidadoEspecial")
+        val idDuenio = intent.getStringExtra("idDuenio")
+        val correo = intent.getStringExtra("correo")
+
+        btnRegresar = findViewById(R.id.btnRegresar)
+
+        btnRegresar.setOnClickListener {
+            val intent = Intent(this, Mascota::class.java)
+            intent.putExtra("idMascota", idMascota)  // ID de la mascota
+            intent.putExtra("nombre", nombreMascota)  // Nombre de la mascota
+            intent.putExtra("edad", edad)  // Nombre de la mascota
+            intent.putExtra("raza", raza)  // Nombre de la mascota
+            intent.putExtra("idDuenio", idDuenio)  // Nombre de la mascota
+            intent.putExtra("cuidadoEspecial", cuidadoEsp)  // Nombre de la mascota
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
+            startActivity(intent)
+        }
 
         nombreMascota?.let {
             tvNombreMascota.text = it
@@ -95,6 +113,7 @@ var idMascota: String? = null
                 cita["fecha"] = selectedDate!!
                 cita["servicio"] = selectedService!!
                 cita["idMascota"] = idMascota!!  // Relacionar la cita con la mascota
+                cita["nombreMascota"] = nombreMascota!!  // Nombre de la mascota
 
                 citasRef.push().setValue(cita)
                     .addOnSuccessListener {
@@ -116,11 +135,5 @@ var idMascota: String? = null
             }
         }
 
-        btnRegresar = findViewById(R.id.btnRegresar)
 
-        btnRegresar.setOnClickListener {
-            val intent = Intent(this, Mascota::class.java)
-            intent.putExtra("correo", correoUsuario) // Adjunta el correo electrónico como extra al Intent
-            startActivity(intent)
-        }
     }}
