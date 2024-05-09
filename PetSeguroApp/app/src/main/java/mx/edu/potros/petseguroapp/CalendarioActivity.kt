@@ -21,7 +21,7 @@ class CalendarioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendario)
-
+        val intent = intent
         // Inicialización de FirebaseDatabase
         database = FirebaseDatabase.getInstance()
 
@@ -153,13 +153,13 @@ class CalendarioActivity : AppCompatActivity() {
     }
 
     private fun cargarNotas(correo: String?) {
-        correo?.let {
+        correo?.let { correo ->
             val notasRef = database.getReference("Notas").orderByChild("usuario").equalTo(correo)
             notasRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     val notasStringBuilder = StringBuilder()
                     dataSnapshot.children.forEach { notaSnapshot ->
-                        val nota = notaSnapshot.child("nota").getValue(String::class.java)
+                        val nota = notaSnapshot.child("texto").getValue(String::class.java)
                         nota?.let {
                             notasStringBuilder.append(it).append("\n") // Agregar la nota y un salto de línea
                         }
@@ -175,8 +175,9 @@ class CalendarioActivity : AppCompatActivity() {
     }
 
 
+
     companion object {
-        private const val TAG = "CalendarioActivity"
+        const val TAG = "CalendarioActivity"
     }
 
     private fun mostrarDialogoCita(fecha: String, detallesCita: String) {
