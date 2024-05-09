@@ -19,6 +19,7 @@ class PreguntasFrecActivity : AppCompatActivity() {
 
         buttonRegresar.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)
         }
 
