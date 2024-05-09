@@ -10,6 +10,7 @@ class PreguntasFrecActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preguntas_frec)
+        val correo = intent.getStringExtra("correo")
 
         val question1 = findViewById<TextView>(R.id.question1)
         val question2 = findViewById<TextView>(R.id.question2)
@@ -38,7 +39,9 @@ class PreguntasFrecActivity : AppCompatActivity() {
     }
 
     private fun abrirRespuestasActivity(preguntaSeleccionada: String) {
+        val correo = intent.getStringExtra("correo")
         val intent = Intent(this, RespuestasActivity::class.java)
+        intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
         intent.putExtra("pregunta", preguntaSeleccionada)
         startActivity(intent)
     }

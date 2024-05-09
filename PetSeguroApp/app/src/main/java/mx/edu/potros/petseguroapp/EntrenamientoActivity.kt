@@ -13,10 +13,13 @@ class EntrenamientoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_entrenamiento)
 
         val tvTitulo = findViewById<TextView>(R.id.tvTituloEntrenamiento)
+        val correo = intent.getStringExtra("correo")
 
         val buttonRegresar: Button = findViewById(R.id.btnRegresar)
         buttonRegresar.setOnClickListener {
-            finish()
+            val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
+            startActivity(intent)
         }
 
         // Recibir el nombre del entrenamiento seleccionado del intent

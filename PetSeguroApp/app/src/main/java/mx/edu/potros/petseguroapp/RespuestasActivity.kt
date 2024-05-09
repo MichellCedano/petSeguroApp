@@ -11,6 +11,8 @@ class RespuestasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_respuestas)
 
+        val correo = intent.getStringExtra("correo")
+
         val buttonRegresar: Button = findViewById(R.id.btnRegresar)
         val textViewPregunta: TextView = findViewById(R.id.tvTitulo)
         val textViewRespuesta: TextView = findViewById(R.id.answer)
@@ -27,6 +29,7 @@ class RespuestasActivity : AppCompatActivity() {
 
         buttonRegresar.setOnClickListener {
             val intent = Intent(this, PreguntasFrecActivity::class.java)
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)
         }
     }

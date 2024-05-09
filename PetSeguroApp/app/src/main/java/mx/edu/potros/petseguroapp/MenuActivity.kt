@@ -42,6 +42,7 @@ class MenuActivity : AppCompatActivity() {
 
         buttonPreguntasFrecuentes.setOnClickListener {
             var intent: Intent = Intent( this, PreguntasFrecActivity::class.java)
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)
         }
 
@@ -53,6 +54,7 @@ class MenuActivity : AppCompatActivity() {
 
         buttonEntrenamiento.setOnClickListener {
             var intent: Intent = Intent( this, MenuEntrenamientoActivity::class.java)
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)
         }
 

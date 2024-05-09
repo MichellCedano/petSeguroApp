@@ -10,6 +10,8 @@ class MenuEntrenamientoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_entrenamiento)
 
+        val correo = intent.getStringExtra("correo")
+
         val buttonRegresar: Button = findViewById(R.id.btnRegresar)
         val buttonSentarse: Button = findViewById(R.id.btnSentarse)
         val buttonPonerseADosPatas: Button = findViewById(R.id.btnPonerseADosPatas)
@@ -17,6 +19,7 @@ class MenuEntrenamientoActivity : AppCompatActivity() {
 
         buttonRegresar.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
+            intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
             startActivity(intent)
         }
 
@@ -34,7 +37,10 @@ class MenuEntrenamientoActivity : AppCompatActivity() {
     }
 
     private fun abrirEntrenamientoActivity(entrenamiento: String) {
+        val correo = intent.getStringExtra("correo")
+
         val intent = Intent(this, EntrenamientoActivity::class.java)
+        intent.putExtra("correo", correo) // Adjunta el correo electrónico como extra al Intent
         intent.putExtra("entrenamiento", entrenamiento)
         startActivity(intent)
     }
